@@ -1,5 +1,6 @@
 @echo off
 
+:: {{ url_for('static', filename='')}}
 :: Navegue até o diretório do seu projeto (substitua "C:\caminho\do\seu\projeto" pelo caminho real)
 cd C:\Users\Julio Rafael\Desktop\site\
 
