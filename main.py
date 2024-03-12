@@ -11,4 +11,3 @@ def index(name=None):
 @app.route('/products/<name>')
 def products(name=None):
     return render_template('products.html', name=name)
-
