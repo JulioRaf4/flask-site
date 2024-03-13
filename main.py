@@ -5,9 +5,20 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<name>')
 def index(name=None):
-    return render_template('index.html', name=name)
+    return render_template('index.html', name=name, )
 
 @app.route('/products/')
 @app.route('/products/<name>')
 def products(name=None):
-    return render_template('products.html', name=name)
+    products = {
+        'product1': 'Apple',
+        'product2': 'Banana',
+        'product3': 'Orange',
+        'product4': 'Grapes',
+        'product5': 'Mango',
+        'product6': 'Papaya'
+    }
+    context = {
+        'products': products
+    }
+    return render_template('products.html', name=name, **context)
