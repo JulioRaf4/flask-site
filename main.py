@@ -11,12 +11,8 @@ def index(name=None):
 @app.route('/products/<name>')
 def products(name=None):
     products = {
-        'product1': 'Apple',
-        'product2': 'Banana',
-        'product3': 'Orange',
-        'product4': 'Grapes',
-        'product5': 'Mango',
-        'product6': 'Papaya'
+        'product1': {'name': 'Apple', 'price': 1.00, 'description': 'A juicy red apple.'},
+        'product2': {'name': 'Banana', 'price': 0.50, 'description': 'A ripe yellow banana.'},
     }
     context = {
         'products': products
