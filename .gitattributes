@@ -1,0 +1,5 @@
+*.html linguist-detectable=false
+templates/*.html linguist-detectable=false
+
+*.bat linguist-language=Batchfile 
+*.sh linguist-language=Batchfile
