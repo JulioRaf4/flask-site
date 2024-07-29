@@ -3,6 +3,7 @@ from models import db, User
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///itens.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 @app.route('/')
@@ -13,8 +14,16 @@ def index(name=None):
 @app.route('/products/')
 @app.route('/products/<name>')
 def products(name=None):
+    products = {
+        1: {"Name": "Cactus",
+            "Description": "Delicious Melted Cactus",
+            "img":"assets/img/products/3.jpg"},
+        2: {"Name": "Cherry",
+            "Description": "Delicious Cherry",
+            "img":"assets/img/products/2.jpg"}
+        }
     context = {
-        'products': 'products'
+        'products': products
     }
     return render_template('products.html', name=name, **context)
 
@@ -27,4 +36,4 @@ def show_db():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run()
+    app.run(debug=True)
