@@ -8,4 +8,4 @@ cd C:\Users\Julio Rafael\Desktop\Julio\Codes\site\
 :: call caminho\do\seu\ambiente\virtual\Scripts\activate.bat
 
 :: Execute o comando Flask
-flask --app main run --reload --extra-files templates/index.html;templates/products.html 
+flask --app main run --reload

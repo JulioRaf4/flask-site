@@ -1,8 +1,10 @@
 from flask import Flask, render_template
-from models import db, User
+from models import db, Produto
+from utils import *
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///itens.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///produtos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
@@ -14,26 +16,19 @@ def index(name=None):
 @app.route('/products/')
 @app.route('/products/<name>')
 def products(name=None):
-    products = {
-        1: {"Name": "Cactus",
-            "Description": "Delicious Melted Cactus",
-            "img":"assets/img/products/3.jpg"},
-        2: {"Name": "Cherry",
-            "Description": "Delicious Cherry",
-            "img":"assets/img/products/2.jpg"}
-        }
+    create_and_populate_db()
+    produtos = Produto.query.all()
     context = {
-        'products': products
+        'products': produtos
     }
     return render_template('products.html', name=name, **context)
 
 @app.route('/db')
 def show_db():
-    users = User.query.all()
-    user_list = [str(user) for user in users]
-    return '<br>'.join(user_list)
+    produtos = Produto.query.all()
+    produto_list = [str(produto) for produto in produtos]
+    return '<br>'.join(produto_list)
+
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
