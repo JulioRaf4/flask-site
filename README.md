@@ -1,1 +1,1 @@
-# simple webpage under construction
+# Flask web project
